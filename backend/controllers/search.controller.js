@@ -114,18 +114,13 @@ export const getSearchHistory = async (req, res) => {
 };
 export const removeFromSearchHistory = async (req, res) => {
   try {
-    const { id } = req.params;
+    const targetId = Number(req.params.id); // TMDB ids are numbers
+    await User.findByIdAndUpdate(req.user._id, {
+      $pull: { searchHistory: { id: targetId } },
+    });
 
-    const user = await User.findById(req.user._id).populate("searchHistory");
-    const searchHistory = user.searchHistory.filter((item) => item.id !== id);
-
-    await User.findByIdAndUpdate(
-      req.user._id,
-      { searchHistory },
-      { new: true }
-    );
-
-    res.status(200).json({ success: true, content: searchHistory });
+    const updated = await User.findById(req.user._id).select("searchHistory");
+    res.status(200).json({ success: true, content: updated.searchHistory });
   } catch (error) {
     console.log("Error removing from search history: " + error);
     res.status(500).json({ success: false, message: error.message });
