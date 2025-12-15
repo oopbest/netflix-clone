@@ -115,3 +115,19 @@ export async function logout(req, res) {
     res.status(500).json({ success: false, message: error.message });
   }
 }
+
+export async function authCheck(req, res) {
+  try {
+    const user = req.user;
+    res.status(200).json({
+      success: true,
+      user: {
+        ...user._doc,
+        password: "",
+      },
+    });
+  } catch (error) {
+    console.log("Error in auth check: " + error);
+    res.status(500).json({ success: false, message: error.message });
+  }
+}

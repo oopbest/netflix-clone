@@ -1,9 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ChevronRightIcon } from "lucide-react";
 import { useState } from "react";
 
 function AuthScreen() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    navigate(`/signup?email=${encodeURIComponent(email)}`);
+  };
   return (
     <div className="hero-bg relative">
       {/* Navbar */}
@@ -30,7 +36,7 @@ function AuthScreen() {
           Ready to watch? Enter your email to create or restart your membership.
         </p>
 
-        <form className="w-full max-w-md">
+        <form className="w-full max-w-md" onSubmit={handleSubmit}>
           <div className="flex flex-col sm:flex-row">
             <input
               type="email"
