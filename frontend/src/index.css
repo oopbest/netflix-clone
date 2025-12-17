@@ -6,3 +6,17 @@
   background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.1)),
     url("hero.png");
 }
+.shimmer {
+  background: linear-gradient(90deg, #2c2c2c 25%, #3a3a3a 37%, #2c2c2c 63%);
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
