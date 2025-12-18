@@ -27,19 +27,19 @@ function Navbar() {
         <nav className="hidden md:flex gap-6 text-white font-semibold">
           <Link
             to="/"
-            className="hover:text-gray-400"
+            className="hover:underline"
             onClick={() => setContentType("movie")}
           >
             Movies
           </Link>
           <Link
             to="/"
-            className="hover:text-gray-400"
+            className="hover:underline"
             onClick={() => setContentType("tv")}
           >
             TV Shows
           </Link>
-          <Link to="/history" className="hover:text-gray-400">
+          <Link to="/history" className="hover:underline">
             Search History
           </Link>
         </nav>
@@ -66,21 +66,21 @@ function Navbar() {
         <div className="w-full sm:hidden mt-4 z-50 bg-black border rounded border-gray-800">
           <Link
             to="/"
-            className="block hover:underline p2"
-            onClick={toggleMobileMenu}
+            className="block hover:underline p-2"
+            onClick={() => setContentType("movie")}
           >
-            Home
+            Movies
           </Link>
           <Link
             to="/"
-            className="block hover:underline p2"
-            onClick={toggleMobileMenu}
+            className="block hover:underline p-2"
+            onClick={() => setContentType("tv")}
           >
             TV Shows
           </Link>
           <Link
             to="/history"
-            className="block hover:underline p2"
+            className="block hover:underline p-2"
             onClick={toggleMobileMenu}
           >
             Search History
