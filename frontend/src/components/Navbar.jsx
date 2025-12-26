@@ -10,8 +10,7 @@ function Navbar() {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
   const { user, logout } = useAuthStore();
-  const { contentType, setContentType } = useContentStore();
-  console.log("Current content type:", contentType);
+  const { setContentType } = useContentStore();
   return (
     <header className="max-w-6xl mx-auto flex flex-wrap items-center justify-between p-4 h-20">
       <div className="flex items-center gap-10 z-50">
@@ -39,8 +38,11 @@ function Navbar() {
           >
             TV Shows
           </Link>
+          <Link to="/search" className="hover:underline">
+            Search
+          </Link>
           <Link to="/history" className="hover:underline">
-            Search History
+            History
           </Link>
         </nav>
       </div>
@@ -79,11 +81,18 @@ function Navbar() {
             TV Shows
           </Link>
           <Link
+            to="/search"
+            className="block hover:underline p-2"
+            onClick={toggleMobileMenu}
+          >
+            Search
+          </Link>
+          <Link
             to="/history"
             className="block hover:underline p-2"
             onClick={toggleMobileMenu}
           >
-            Search History
+            History
           </Link>
         </div>
       )}
