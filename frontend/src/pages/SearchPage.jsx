@@ -23,7 +23,6 @@ function SearchPage() {
 
   const handleSearch = async (e) => {
     e.preventDefault();
-    // todo call api search movie, tv, person
     try {
       const response = await axios.get(
         `/api/v1/search/${activeTab}/${searchTerm}`
@@ -39,6 +38,7 @@ function SearchPage() {
     }
   };
   console.log("results", results);
+  console.log("activeTab", activeTab);
   return (
     <div className="bg-black min-h-screen text-white">
       <Navbar />
@@ -101,7 +101,10 @@ function SearchPage() {
                     <h2 className="mt-2 text-xl font-bold">{item.name}</h2>
                   </div>
                 ) : (
-                  <Link to={`/watch/${item.id}`}>
+                  <Link
+                    to={`/watch/${item.id}`}
+                    onClick={() => setContentType(activeTab)}
+                  >
                     <img
                       src={ORIGINAL_IMG_BASE_URL + item.poster_path}
                       alt={item.title}

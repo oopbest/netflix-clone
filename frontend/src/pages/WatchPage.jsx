@@ -17,7 +17,7 @@ function WatchPage() {
   const [trailers, setTrailers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [similarContent, setSimilarContent] = useState({});
-  const [contentDetails, setContentDetails] = useState(null);
+  const [contentDetails, setContentDetails] = useState({});
   const [currentTrailerIdx, setCurrentTrailerIdx] = useState(0);
   const sliderRef = useRef(null);
 

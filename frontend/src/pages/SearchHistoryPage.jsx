@@ -40,12 +40,10 @@ function SearchHistoryPage() {
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
-  const handleDelete = async (result) => {
+  const handleDelete = async (item) => {
     try {
-      await axios.delete(`/api/v1/search/history/${result.id}`);
-      setSearchHistory(
-        searchHistory.filter((result) => result.id !== result.id)
-      );
+      await axios.delete(`/api/v1/search/history/${item.id}`);
+      setSearchHistory(searchHistory.filter((result) => result.id !== item.id));
     } catch (error) {
       console.log("Error deleting search history: " + error);
     }
